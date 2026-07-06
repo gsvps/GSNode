@@ -7,7 +7,7 @@ MODE="${1:-quick}"
 
 if ! command -v "$BIN" >/dev/null 2>&1; then
   echo "gsnode not found. Install first:" >&2
-  echo "  curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh" >&2
+  echo "  curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.0/install.sh | sh" >&2
   exit 1
 fi
 

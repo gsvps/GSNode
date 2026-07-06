@@ -2,8 +2,10 @@
 # GSNode installer — https://github.com/gsvps/GSNode
 set -eu
 
+VERSION="${GSNODE_VERSION:-0.1.0}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
-BASE_URL="${GSNODE_BASE_URL:-https://github.com/gsvps/GSNode/raw/main/bin}"
+REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
+BASE_URL="${GSNODE_BASE_URL:-$REPO/raw/v${VERSION}/bin}"
 
 OS="$(uname -s | tr '[:upper:]' '[:lower:]')"
 ARCH="$(uname -m)"
@@ -38,6 +40,7 @@ fi
 TMP="$(mktemp)"
 trap 'rm -f "$TMP"' EXIT
 
+echo "Installing GSNode v${VERSION} ..."
 echo "Downloading $URL ..."
 curl -fL --retry 3 --connect-timeout 30 "$URL" -o "$TMP"
 
@@ -46,7 +49,7 @@ mkdir -p "$INSTALL_DIR"
 mv "$TMP" "$INSTALL_DIR/gsnode"
 
 echo ""
-echo "GSNode installed: $INSTALL_DIR/gsnode"
+echo "GSNode v${VERSION} installed: $INSTALL_DIR/gsnode"
 echo ""
 echo "  Quick check : gsnode -quick"
 echo "  Full check  : gsnode -run"
