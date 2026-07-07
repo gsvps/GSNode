@@ -1,26 +1,26 @@
 # GSNode
 
-> **Version 0.1.13** · [Releases](https://github.com/gsvps/GSNode/releases)
+> **Version 0.1.14** · [Releases](https://github.com/gsvps/GSNode/releases) · **官网 [GSVPS](https://www.gsvps.com)**
 
 **English**  
-GSNode is a lightweight server node quality probe for the [GSVPS](https://www.gsvps.com) ecosystem. One command installs the binary, runs a full benchmark, uploads the report to GSVPS, and prints the online report URL in your terminal.
+GSNode is a lightweight server node quality probe for the [GSVPS](https://www.gsvps.com) ecosystem. One command downloads the binary, runs a full benchmark, uploads the report to GSVPS, and prints the online report URL in your terminal.
 
 **中文**  
-GSNode 是 GSVPS 生态下的服务器节点质量检测工具。一条命令完成安装、完整检测、报告上传 GSVPS，并在终端显示在线报告链接与模块评分摘要。
+GSNode 是 [GSVPS](https://www.gsvps.com) 生态下的服务器节点质量检测工具。一条命令完成下载、完整检测、报告上传，并在终端输出在线报告链接与模块评分摘要。
 
 ---
 
 ## One-line detect | 一键检测
 
 ```bash
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.13/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.14/install.sh | sh
 ```
 
 脚本会自动：
 
 1. **临时下载**检测程序（默认不安装到系统）
 2. 执行完整检测（CPU、内存、磁盘、网络、IP 质量、回程、流媒体等）
-3. 将报告上传至 [GSVPS](https://www.gsvps.com)
+3. 将报告上传至 [GSVPS 官网](https://www.gsvps.com)
 4. 在终端输出评分摘要与永久报告链接
 5. **自动清理**所有本地临时文件（二进制、报告缓存），服务器不留痕迹
 
@@ -42,7 +42,7 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.13/install.sh | sh
 上传状态 : 成功
 
 在线报告 :
-  https://www.gsvps.com/report/4e101587b749
+  https://www.gsvps.com/report/xxx
 ```
 
 ---
@@ -68,20 +68,6 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/cleanup.sh | sh -s -- -n
 ```
 
 清理范围：`/usr/local/bin/gsnode`、临时目录 `/tmp/gsnode.*`、磁盘测试缓存 `gsprobe-disk.tmp`；可通过 `GSNODE_DATA`、`GSNODE_BIN` 指定额外路径。
-
----
-
-## Environment | 环境变量
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `GSVPS_UPLOAD_URL` | `https://www.gsvps.com/api/reports/upload` | Upload API |
-| `GSVPS_SITE_URL` | `https://www.gsvps.com` | Site base URL |
-| `GSVPS_UPLOAD=0` | — | Disable upload |
-| `GSNODE_KEEP=1` | — | Keep binary installed to `/usr/local/bin` after run |
-| `GSNODE_INSTALL_ONLY=1` | — | Install only, skip benchmark (use with `GSNODE_KEEP=1`) |
-| `GSNODE_BIN` | — | Use existing binary path |
-| `GSNODE_DATA` | temp dir | Local report cache dir (auto-cleaned in pure mode) |
 
 ---
 
@@ -125,9 +111,37 @@ See [`bin/`](bin/):
 | **CPU / 内存 / 磁盘** | 算力、带宽、I/O 基准 |
 | **网络** | GeoIP、ASN、DNS、延迟、上下行采样 |
 | **IP 质量** | 多源 IP 类型、风险评分、DNSBL |
-| **回程** | nexttrace / tracepath / tracert |
-| **流媒体 & AI** | Netflix、YouTube、ChatGPT、Claude 等 |
+| **回程** | nexttrace / tracepath / tracert，线路识别与路线图 |
+| **流媒体 & AI** | Netflix（双片源）、Disney+（bamgrid API）、YouTube、ChatGPT、Claude、Gemini 等 |
 | **Web 控制台** | SSE 实时日志、证书式报告 |
+
+> 流媒体检测采用各平台专用 API 与片源探测逻辑，可区分 Netflix 完整解锁 / 仅自制剧、ChatGPT 仅网页 / 仅 APP 等状态；**不等同于**登录账号后的完整播放验证。
+
+---
+
+## Official site | 官网
+
+- **GSVPS 官网：** https://www.gsvps.com
+- **在线报告示例：** https://www.gsvps.com/report/{reportId}
+
+---
+
+## Acknowledgments | 开源鸣谢
+
+GSNode / GSProbe 为独立实现，未包含第三方检测项目源码。以下开源项目的思路与检测方法在设计与实现中提供了重要参考，特此致谢：
+
+| 项目 | 说明 |
+|------|------|
+| [sjlleo/netflix-verify](https://github.com/sjlleo/netflix-verify) | Netflix 解锁检测（多片源 + 重定向地区码） |
+| [xykt/RegionRestrictionCheck](https://github.com/xykt/RegionRestrictionCheck) | 流媒体解锁检测脚本（Disney+ bamgrid、YouTube、DAZN 等） |
+| [lmc999/RegionRestrictionCheck](https://github.com/lmc999/RegionRestrictionCheck) | 上述脚本的原始版本 |
+| [CoiaPrant/MediaUnlock_Test](https://github.com/CoiaPrant/MediaUnlock_Test) | 流媒体解锁检测早期实现 |
+| [Peters-Pans/streamprobe](https://github.com/Peters-Pans/streamprobe) | Go 流媒体 / OpenAI 统一检测 CLI |
+| [missuo/OpenAI-Checker](https://github.com/missuo/OpenAI-Checker) | OpenAI / ChatGPT 地区可用性检测 |
+| [LemonBench/LemonBench](https://github.com/LemonBench/LemonBench) | 流媒体检测脚本演进脉络 |
+| [NextTrace](https://github.com/nxtrace/Ntrace) | 回程路由探测工具（运行时按需安装） |
+
+感谢以上作者与社区的贡献。
 
 ---
 
