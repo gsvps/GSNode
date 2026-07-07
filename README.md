@@ -1,6 +1,6 @@
 # GSNode
 
-> **Version 0.1.1** · [Releases](https://github.com/gsvps/GSNode/releases)
+> **Version 0.1.2** · [Releases](https://github.com/gsvps/GSNode/releases)
 
 **English**  
 GSNode is a lightweight server node quality probe for the [GSVPS](https://www.gsvps.com) ecosystem. One command installs the binary, runs a full benchmark, uploads the report to GSVPS, and prints the online report URL in your terminal.
@@ -13,15 +13,16 @@ GSNode 是 GSVPS 生态下的服务器节点质量检测工具。一条命令完
 ## One-line detect | 一键检测
 
 ```bash
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.1/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.2/install.sh | sh
 ```
 
 脚本会自动：
 
-1. 下载并安装 `gsnode` 到 `/usr/local/bin`（若尚未安装）
+1. **临时下载**检测程序（默认不安装到系统）
 2. 执行完整检测（CPU、内存、磁盘、网络、IP 质量、回程、流媒体等）
 3. 将报告上传至 [GSVPS](https://www.gsvps.com)
 4. 在终端输出评分摘要与永久报告链接
+5. **自动清理**所有本地临时文件（二进制、报告缓存），服务器不留痕迹
 
 终端示例：
 
@@ -53,8 +54,10 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.1/install.sh | sh
 | `GSVPS_UPLOAD_URL` | `https://www.gsvps.com/api/reports/upload` | Upload API |
 | `GSVPS_SITE_URL` | `https://www.gsvps.com` | Site base URL |
 | `GSVPS_UPLOAD=0` | — | Disable upload |
-| `GSNODE_INSTALL_ONLY=1` | — | Install only, skip benchmark |
-| `GSNODE_DATA` | `/tmp/gsnode-$$` | Local report cache dir |
+| `GSNODE_KEEP=1` | — | Keep binary installed to `/usr/local/bin` after run |
+| `GSNODE_INSTALL_ONLY=1` | — | Install only, skip benchmark (use with `GSNODE_KEEP=1`) |
+| `GSNODE_BIN` | — | Use existing binary path |
+| `GSNODE_DATA` | temp dir | Local report cache dir (auto-cleaned in pure mode) |
 
 ---
 
