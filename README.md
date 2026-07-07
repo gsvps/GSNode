@@ -34,9 +34,9 @@ curl -fsSL https://dl.gsvps.com/install.sh | sh
 
 检测完成后可在 [GSVPS](https://www.gsvps.com) 查看证书式在线报告：
 
-![GSVPS 探针报告示例](https://github.com/gsvps/GSNode/raw/main/gsvps-probe-8DC2BB1BE2A4.webp)
+![GSVPS 探针报告示例](./gsvps-probe-1FEBD3A5116D.webp)
 
-示例：[https://www.gsvps.com/report/8dc2bb1be2a4](https://www.gsvps.com/report/8dc2bb1be2a4)
+示例：[https://www.gsvps.com/report/1febd3a5116d](https://www.gsvps.com/report/1febd3a5116d)
 
 终端示例：
 
@@ -136,7 +136,7 @@ See [`bin/`](bin/):
 ## Official site | 官网
 
 - **GSVPS 官网：** https://www.gsvps.com
-- **在线报告示例：** https://www.gsvps.com/report/8dc2bb1be2a4
+- **在线报告示例：** https://www.gsvps.com/report/1febd3a5116d
 
 ---
 
