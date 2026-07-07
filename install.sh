@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.14/install.sh | sh
+# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 set -eu
 
 VERSION="${GSNODE_VERSION:-0.1.14}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
+DATA_PRIMARY="${GSNODE_DATA_PRIMARY:-https://dl.gsvps.com}"
+DATA_FALLBACK="${GSNODE_DATA_FALLBACK:-$REPO/raw/main}"
 BASE_URL="${GSNODE_BASE_URL:-$REPO/raw/v${VERSION}/bin}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
 GSVPS_UPLOAD_URL="${GSVPS_UPLOAD_URL:-https://www.gsvps.com/api/reports/upload}"
@@ -26,7 +28,10 @@ if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
 GSNode 纯净一键检测
 
 用法:
-  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/install.sh | sh
+  curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
+
+备用地址:
+  curl -fsSL https://dl.gsvps.com/install.sh | sh
 
 默认行为（纯净模式）:
   临时下载检测程序 → 完整检测 → 上传 GSVPS → 终端显示结果 → 自动清理所有本地文件
@@ -41,9 +46,15 @@ GSNode 纯净一键检测
   GSNODE_INSTALL_ONLY=1 仅安装，不检测（需配合 GSNODE_KEEP=1）
   GSNODE_BIN            使用已有二进制路径
   GSNODE_DATA           自定义报告缓存目录
+  GSNODE_DATA_PRIMARY   数据/二进制主下载源 (默认 https://dl.gsvps.com)
+  GSNODE_DATA_FALLBACK  备用下载源 (默认 GitHub raw/main)
+
+参考数据 (ping_targets / dnsbl) 由探针自动切换:
+  主源 ${DATA_PRIMARY} → 备用 ${DATA_FALLBACK}
 
 手动清理:
-  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/cleanup.sh | sh
+  curl -fsSL https://github.com/gsvps/GSNode/raw/main/cleanup.sh | sh
+  curl -fsSL https://dl.gsvps.com/cleanup.sh | sh
 EOF
   exit 0
 fi
@@ -107,8 +118,16 @@ DOWNLOAD_URL="$BASE_URL/$BIN_NAME"
 download_to() {
   dest="$1"
   echo "→ 正在下载 GSNode ..."
-  curl -fL --retry 3 --connect-timeout 30 --progress-bar "$DOWNLOAD_URL" -o "$dest"
-  chmod +x "$dest"
+  for url in "$DATA_PRIMARY/$BIN_NAME" "$BASE_URL/$BIN_NAME"; do
+    if curl -fL --retry 3 --connect-timeout 30 --progress-bar "$url" -o "$dest"; then
+      chmod +x "$dest"
+      echo "→ 下载源: $url"
+      return 0
+    fi
+    echo "→ 下载失败，尝试备用源 ..."
+  done
+  echo "错误: 无法从 $DATA_PRIMARY 或 $BASE_URL 下载 $BIN_NAME" >&2
+  return 1
 }
 
 prepare_binary() {
@@ -170,8 +189,9 @@ fi
 
 export GSVPS_UPLOAD_URL
 export GSVPS_SITE_URL
-export GSPROBE_PING_TARGETS_URL="${GSPROBE_PING_TARGETS_URL:-$REPO/raw/v${VERSION}/ping_targets.json}"
+# ping_targets / dnsbl：探针内自动 dl.gsvps.com → GitHub 回退；可用 GSPROBE_PING_TARGETS_URL 强制指定
 
+echo "→ 参考数据: ${DATA_PRIMARY} (失败自动切换 ${DATA_FALLBACK})"
 echo "→ 开始完整检测（约 3–8 分钟，进度见下方日志）"
 if [ "${GSVPS_UPLOAD:-1}" != "0" ]; then
   echo "→ 检测完成后将上传至 GSVPS 并显示在线报告链接"

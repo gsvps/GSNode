@@ -15,7 +15,7 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.5/install.sh | sh
 
 ```bash
 cd GSProbe
-go run ./cmd/gen-ping-json
-go run ./cmd/target-collector -timeout 4s -workers 40
+go run ../GetData/cmd/gen-ping-json
+go run ../GetData/cmd/target-collector -timeout 4s -workers 40
 cp data/ping_targets.json ../GSNode/ping_targets.json
 ```

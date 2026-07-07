@@ -13,8 +13,9 @@ usage() {
 GSNode 清理脚本
 
 用法:
-  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/cleanup.sh | sh
-  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/cleanup.sh | sh -s -- -y
+  curl -fsSL https://github.com/gsvps/GSNode/raw/main/cleanup.sh | sh
+  curl -fsSL https://dl.gsvps.com/cleanup.sh | sh
+  curl -fsSL https://github.com/gsvps/GSNode/raw/main/cleanup.sh | sh -s -- -y
 
 清理内容:
   - 已安装的 gsnode 二进制 (${INSTALL_DIR}/gsnode)
