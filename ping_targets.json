@@ -1,6 +1,6 @@
 {
   "version": "2026-07-07",
-  "updatedAt": "2026-07-07T13:23:07Z",
+  "updatedAt": "2026-07-07T18:49:05Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -58,7 +58,7 @@
       "移动": [
         {
           "ip": "222.35.73.1",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -234,18 +234,9 @@
       "移动": [
         {
           "ip": "117.157.16.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.180.2",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -419,7 +410,7 @@
       "移动": [
         {
           "ip": "111.47.131.101",
-          "score": 70,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -815,18 +806,9 @@
       "移动": [
         {
           "ip": "117.161.76.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.180.2",
-          "score": 0,
-          "source": "gateway"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -947,18 +929,9 @@
       "移动": [
         {
           "ip": "183.220.151.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.137.82.4",
-          "score": 0,
-          "source": "gateway"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -991,18 +964,9 @@
       "移动": [
         {
           "ip": "120.220.145.91",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.137.191.26",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1114,18 +1078,9 @@
       "移动": [
         {
           "ip": "183.201.244.91",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.106.2",
-          "score": 0,
-          "source": "gateway"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1202,7 +1157,7 @@
       "移动": [
         {
           "ip": "36.189.208.164",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -1334,18 +1289,9 @@
       "移动": [
         {
           "ip": "117.147.213.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.180.2",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1432,19 +1378,10 @@
       ],
       "移动": [
         {
-          "ip": "221.130.33.52",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "221.179.155.161",
-          "score": 0,
-          "source": "gateway"
-        },
-        {
           "ip": "222.35.73.1",
-          "score": 0,
-          "source": "cdn"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [

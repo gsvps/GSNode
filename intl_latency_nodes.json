@@ -1,0 +1,11 @@
+[
+  {"city": "洛杉矶", "host": "speedtest.lax12.us.leaseweb.net", "port": "5201"},
+  {"city": "纽约", "host": "nyc.speedtest.clouvider.net", "port": "5200", "altHost": "speedtest.nyc1.us.leaseweb.net", "altPort": "5201"},
+  {"city": "东京", "host": "speedtest.tyo11.jp.leaseweb.net", "port": "5201"},
+  {"city": "香港", "host": "speedtest.hkg12.hk.leaseweb.net", "port": "5201"},
+  {"city": "新加坡", "host": "speedtest.sin1.sg.leaseweb.net", "port": "5201"},
+  {"city": "法兰克福", "host": "fra.speedtest.clouvider.net", "port": "5200", "altHost": "speedtest.fra1.de.leaseweb.net", "altPort": "5201"},
+  {"city": "伦敦", "host": "speedtest.lon1.uk.leaseweb.net", "port": "5201"},
+  {"city": "阿姆斯特丹", "host": "iperf-ams-nl.eranium.net", "port": "5201", "altHost": "speedtest.ams1.nl.leaseweb.net", "altPort": "5201"},
+  {"city": "圣保罗", "host": "speedtest.sao1.edgoo.net", "port": "9205", "altHost": "speedtest.sao1.edgoo.net", "altPort": "5201"}
+]
