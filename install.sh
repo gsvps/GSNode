@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.4/install.sh | sh
+# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.5/install.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.4}"
+VERSION="${GSNODE_VERSION:-0.1.5}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 BASE_URL="${GSNODE_BASE_URL:-$REPO/raw/v${VERSION}/bin}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
@@ -170,6 +170,7 @@ fi
 
 export GSVPS_UPLOAD_URL
 export GSVPS_SITE_URL
+export GSPROBE_PING_TARGETS_URL="${GSPROBE_PING_TARGETS_URL:-$REPO/raw/v${VERSION}/ping_targets.json}"
 
 echo "→ 开始完整检测（约 3–8 分钟，进度见下方日志）"
 if [ "${GSVPS_UPLOAD:-1}" != "0" ]; then

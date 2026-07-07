@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 清理脚本：移除本地 gsnode 二进制、报告缓存与检测临时文件
-# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.4/cleanup.sh | sh
+# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.5/cleanup.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.4}"
+VERSION="${GSNODE_VERSION:-0.1.5}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
 DRY_RUN=0
 ASSUME_YES=0
