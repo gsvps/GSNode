@@ -1,6 +1,6 @@
 # GSNode
 
-> **Version 0.1.7** · [Releases](https://github.com/gsvps/GSNode/releases)
+> **Version 0.1.8** · [Releases](https://github.com/gsvps/GSNode/releases)
 
 **English**  
 GSNode is a lightweight server node quality probe for the [GSVPS](https://www.gsvps.com) ecosystem. One command installs the binary, runs a full benchmark, uploads the report to GSVPS, and prints the online report URL in your terminal.
@@ -13,7 +13,7 @@ GSNode 是 GSVPS 生态下的服务器节点质量检测工具。一条命令完
 ## One-line detect | 一键检测
 
 ```bash
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.7/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.8/install.sh | sh
 ```
 
 脚本会自动：
