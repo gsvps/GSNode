@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.2/install.sh | sh
+# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/install.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.2}"
+VERSION="${GSNODE_VERSION:-0.1.3}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 BASE_URL="${GSNODE_BASE_URL:-$REPO/raw/v${VERSION}/bin}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
@@ -41,6 +41,9 @@ GSNode 纯净一键检测
   GSNODE_INSTALL_ONLY=1 仅安装，不检测（需配合 GSNODE_KEEP=1）
   GSNODE_BIN            使用已有二进制路径
   GSNODE_DATA           自定义报告缓存目录
+
+手动清理:
+  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/cleanup.sh | sh
 EOF
   exit 0
 fi

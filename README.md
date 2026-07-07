@@ -1,6 +1,6 @@
 # GSNode
 
-> **Version 0.1.2** · [Releases](https://github.com/gsvps/GSNode/releases)
+> **Version 0.1.3** · [Releases](https://github.com/gsvps/GSNode/releases)
 
 **English**  
 GSNode is a lightweight server node quality probe for the [GSVPS](https://www.gsvps.com) ecosystem. One command installs the binary, runs a full benchmark, uploads the report to GSVPS, and prints the online report URL in your terminal.
@@ -13,7 +13,7 @@ GSNode 是 GSVPS 生态下的服务器节点质量检测工具。一条命令完
 ## One-line detect | 一键检测
 
 ```bash
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.2/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/install.sh | sh
 ```
 
 脚本会自动：
@@ -44,6 +44,30 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.2/install.sh | sh
 在线报告 :
   https://www.gsvps.com/report/4e101587b749
 ```
+
+---
+
+## Cleanup | 手动清理
+
+若曾使用 `GSNODE_KEEP=1` 安装，或检测中断导致临时文件残留，可运行清理脚本：
+
+```bash
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/cleanup.sh | sh
+```
+
+跳过确认：
+
+```bash
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/cleanup.sh | sh -s -- -y
+```
+
+仅预览（不删除）：
+
+```bash
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.3/cleanup.sh | sh -s -- -n
+```
+
+清理范围：`/usr/local/bin/gsnode`、临时目录 `/tmp/gsnode.*`、磁盘测试缓存 `gsprobe-disk.tmp`；可通过 `GSNODE_DATA`、`GSNODE_BIN` 指定额外路径。
 
 ---
 
