@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.9/install.sh | sh
+# Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.10/install.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.9}"
+VERSION="${GSNODE_VERSION:-0.1.10}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 BASE_URL="${GSNODE_BASE_URL:-$REPO/raw/v${VERSION}/bin}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
