@@ -118,15 +118,20 @@ DOWNLOAD_URL="$BASE_URL/$BIN_NAME"
 download_to() {
   dest="$1"
   echo "→ 正在下载 GSNode ..."
-  for url in "$DATA_PRIMARY/$BIN_NAME" "$BASE_URL/$BIN_NAME"; do
-    if curl -fL --retry 3 --connect-timeout 30 --progress-bar "$url" -o "$dest"; then
+  attempt=0
+  for url in "$DATA_PRIMARY/bin/$BIN_NAME" "$BASE_URL/$BIN_NAME"; do
+    attempt=$((attempt + 1))
+    if [ "$attempt" -gt 1 ]; then
+      echo "→ 主源不可用，尝试备用源 ..."
+    fi
+    # 静默下载，避免 --progress-bar 与 echo 混排导致终端乱码
+    if curl -fsSL --retry 3 --connect-timeout 30 --max-time 600 "$url" -o "$dest"; then
       chmod +x "$dest"
-      echo "→ 下载源: $url"
+      echo "→ 下载完成"
       return 0
     fi
-    echo "→ 下载失败，尝试备用源 ..."
   done
-  echo "错误: 无法从 $DATA_PRIMARY 或 $BASE_URL 下载 $BIN_NAME" >&2
+  echo "错误: 无法从 ${DATA_PRIMARY}/bin 或 GitHub 下载 ${BIN_NAME}" >&2
   return 1
 }
 
