@@ -4,14 +4,20 @@
 
 ## 安装
 
-```bash
-curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
-```
-
-备用（国内）：
+> **请务必使用最新版本。** 当前版本：**v0.1.17**。运行脚本后终端会输出实际版本号。
 
 ```bash
 curl -fsSL https://dl.gsvps.com/install.sh | sh
+```
+
+备用地址：
+
+```bash
+# GitHub
+curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
+
+# jsDelivr CDN
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@main/install.sh | sh
 ```
 
 ## v0.1.17 更新
