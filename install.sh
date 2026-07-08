@@ -48,6 +48,8 @@ GSNode 纯净一键检测
   GSNODE_DATA           自定义报告缓存目录
   GSNODE_DATA_PRIMARY   数据/二进制主下载源 (默认 https://dl.gsvps.com)
   GSNODE_DATA_FALLBACK  备用下载源 (默认 GitHub raw/main)
+  GSNODE_DOWNLOAD_RETRIES      每个下载源重试次数 (默认 3)
+  GSNODE_DOWNLOAD_RETRY_DELAY  重试间隔秒数 (默认 2)
 
 参考数据 (ping_targets / dnsbl) 由探针自动切换:
   主源 ${DATA_PRIMARY} → 备用 ${DATA_FALLBACK}
@@ -117,21 +119,61 @@ DOWNLOAD_URL="$BASE_URL/$BIN_NAME"
 
 download_to() {
   dest="$1"
-  echo "→ 正在下载 GSNode ..."
-  attempt=0
-  for url in "$DATA_PRIMARY/bin/$BIN_NAME" "$BASE_URL/$BIN_NAME"; do
-    attempt=$((attempt + 1))
-    if [ "$attempt" -gt 1 ]; then
-      echo "→ 主源不可用，尝试备用源 ..."
+  max_retries="${GSNODE_DOWNLOAD_RETRIES:-3}"
+  retry_delay="${GSNODE_DOWNLOAD_RETRY_DELAY:-2}"
+  url_primary="$DATA_PRIMARY/bin/$BIN_NAME"
+  url_fallback="$BASE_URL/$BIN_NAME"
+
+  use_progress=0
+  if [ -t 2 ]; then
+    use_progress=1
+  fi
+
+  src_idx=0
+  for url in "$url_primary" "$url_fallback"; do
+    src_idx=$((src_idx + 1))
+    if [ "$src_idx" -eq 1 ]; then
+      src_label="主源 (${DATA_PRIMARY})"
+    else
+      src_label="备用源 (GitHub)"
     fi
-    # 静默下载，避免 --progress-bar 与 echo 混排导致终端乱码
-    if curl -fsSL --retry 3 --connect-timeout 30 --max-time 600 "$url" -o "$dest"; then
-      chmod +x "$dest"
-      echo "→ 下载完成"
-      return 0
-    fi
+
+    retry=1
+    while [ "$retry" -le "$max_retries" ]; do
+      if [ "$src_idx" -gt 1 ] && [ "$retry" -eq 1 ]; then
+        echo "→ 主源不可用，切换至${src_label} ..." >&2
+      elif [ "$retry" -gt 1 ]; then
+        echo "→ 下载失败，${retry_delay}s 后重试 (${retry}/${max_retries}) [${src_label}] ..." >&2
+        sleep "$retry_delay"
+      else
+        echo "→ 正在下载 GSNode [${src_label}] (${retry}/${max_retries}) ..." >&2
+      fi
+
+      rm -f "$dest" 2>/dev/null || true
+
+      ok=0
+      if [ "$use_progress" = "1" ]; then
+        if curl -fL --connect-timeout 30 --max-time 600 --progress-bar "$url" -o "$dest"; then
+          ok=1
+        fi
+      else
+        if curl -fsSL --connect-timeout 30 --max-time 600 "$url" -o "$dest"; then
+          ok=1
+        fi
+      fi
+
+      if [ "$ok" = "1" ] && [ -s "$dest" ]; then
+        chmod +x "$dest"
+        echo "→ 下载完成" >&2
+        return 0
+      fi
+
+      rm -f "$dest" 2>/dev/null || true
+      retry=$((retry + 1))
+    done
   done
-  echo "错误: 无法从 ${DATA_PRIMARY}/bin 或 GitHub 下载 ${BIN_NAME}" >&2
+
+  echo "错误: 无法从 ${DATA_PRIMARY}/bin 或 GitHub 下载 ${BIN_NAME}（各源已重试 ${max_retries} 次）" >&2
   return 1
 }
 
