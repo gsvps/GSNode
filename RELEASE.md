@@ -1,6 +1,6 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.15**（见 `VERSION`）
+当前版本：**v0.1.16**（见 `VERSION`）
 
 ## 安装
 
@@ -13,6 +13,12 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 ```bash
 curl -fsSL https://dl.gsvps.com/install.sh | sh
 ```
+
+## v0.1.16 更新
+
+- 全国延迟：34 省含港澳台（ping 目标库校验与采集同步）
+- 国际互连：香港节点改为韩国（sel.speedtest.sggs.network）
+- 参考数据：ping_targets / intl_latency_nodes 同步更新
 
 ## v0.1.15 更新
 

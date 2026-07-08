@@ -3,7 +3,7 @@
 # Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.15}"
+VERSION="${GSNODE_VERSION:-0.1.16}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 DATA_PRIMARY="${GSNODE_DATA_PRIMARY:-https://dl.gsvps.com}"
 DATA_FALLBACK="${GSNODE_DATA_FALLBACK:-$REPO/raw/main}"
