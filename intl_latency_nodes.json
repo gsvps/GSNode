@@ -2,7 +2,7 @@
   {"city": "洛杉矶", "host": "speedtest.lax12.us.leaseweb.net", "port": "5201"},
   {"city": "纽约", "host": "nyc.speedtest.clouvider.net", "port": "5200", "altHost": "speedtest.nyc1.us.leaseweb.net", "altPort": "5201"},
   {"city": "东京", "host": "speedtest.tyo11.jp.leaseweb.net", "port": "5201"},
-  {"city": "香港", "host": "speedtest.hkg12.hk.leaseweb.net", "port": "5201"},
+  {"city": "韩国", "host": "sel.speedtest.sggs.network", "port": "5201"},
   {"city": "新加坡", "host": "speedtest.sin1.sg.leaseweb.net", "port": "5201"},
   {"city": "法兰克福", "host": "fra.speedtest.clouvider.net", "port": "5200", "altHost": "speedtest.fra1.de.leaseweb.net", "altPort": "5201"},
   {"city": "伦敦", "host": "speedtest.lon1.uk.leaseweb.net", "port": "5201"},
