@@ -1,6 +1,6 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.16**（见 `VERSION`）
+当前版本：**v0.1.17**（见 `VERSION`）
 
 ## 安装
 
@@ -13,6 +13,13 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 ```bash
 curl -fsSL https://dl.gsvps.com/install.sh | sh
 ```
+
+## v0.1.17 更新
+
+- 系统报告：CPU 偷取时间（steal time）采样与宿主机超售判断
+- 系统报告：cgroup v2/v1 CPU、内存、I/O 限额检测与缩水提示
+- 系统报告：文件系统、块设备、I/O 调度器、inode 使用率、fsync 延迟
+- 系统报告：展示内存气球/KSM、BBR/TCP 调优、时区
 
 ## v0.1.16 更新
 
