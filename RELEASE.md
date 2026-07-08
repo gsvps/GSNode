@@ -1,6 +1,6 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.14**（见 `VERSION`）
+当前版本：**v0.1.15**（见 `VERSION`）
 
 ## 安装
 
@@ -13,6 +13,12 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 ```bash
 curl -fsSL https://dl.gsvps.com/install.sh | sh
 ```
+
+## v0.1.15 更新
+
+- 网络质量：新增 UDP 检测（DNS 出站、STUN NAT 类型、QUIC UDP 443）
+- 报告展示：网络质量板块显示 UDP 出站 / NAT / QUIC 详情
+- 安装脚本：下载增加重试机制与进度条（v0.1.14）
 
 ## v0.1.14 更新
 
