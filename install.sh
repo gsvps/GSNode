@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://dl.gsvps.com/install.sh | sh
+# Usage: curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.17 | sh
 set -eu
 
 VERSION="${GSNODE_VERSION:-0.1.17}"
@@ -28,11 +28,11 @@ if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
 GSNode 纯净一键检测
 
 用法:
-  curl -fsSL https://dl.gsvps.com/install.sh | sh
+  curl -fsSL https://dl.gsvps.com/install.sh?v=${VERSION} | sh
 
 备用地址:
-  curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
-  curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@main/install.sh | sh
+  curl -fsSL https://github.com/gsvps/GSNode/raw/v${VERSION}/install.sh | sh
+  curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v${VERSION}/install.sh | sh
 
 默认行为（纯净模式）:
   临时下载检测程序 → 完整检测 → 上传 GSVPS → 终端显示结果 → 自动清理所有本地文件
