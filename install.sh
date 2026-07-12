@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.17 | sh
+# Usage: curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.18 | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.17}"
+VERSION="${GSNODE_VERSION:-0.1.18}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 DATA_PRIMARY="${GSNODE_DATA_PRIMARY:-https://dl.gsvps.com}"
 DATA_FALLBACK="${GSNODE_DATA_FALLBACK:-$REPO/raw/v${VERSION}}"
@@ -53,7 +53,7 @@ GSNode 纯净一键检测
   GSNODE_DOWNLOAD_RETRY_DELAY  重试间隔秒数 (默认 2)
 
 参考数据 (ping_targets / dnsbl) 由探针自动切换:
-  主源 ${DATA_PRIMARY} → 备用 ${DATA_FALLBACK}
+  主源 ${DATA_PRIMARY} → 备用 GitHub → jsDelivr CDN
 
 手动清理:
   curl -fsSL https://dl.gsvps.com/cleanup.sh | sh
@@ -238,9 +238,9 @@ fi
 
 export GSVPS_UPLOAD_URL
 export GSVPS_SITE_URL
-# ping_targets / dnsbl：探针内自动 dl.gsvps.com → GitHub 回退；可用 GSPROBE_PING_TARGETS_URL 强制指定
+# ping_targets / dnsbl：探针内自动 dl.gsvps.com → GitHub → jsDelivr 回退；可用 GSPROBE_PING_TARGETS_URL 强制指定
 
-echo "→ 参考数据: ${DATA_PRIMARY} (失败自动切换 ${DATA_FALLBACK})"
+echo "→ 参考数据: ${DATA_PRIMARY} (失败自动切换 GitHub / jsDelivr)"
 echo "→ 开始完整检测（约 3–8 分钟，进度见下方日志）"
 if [ "${GSVPS_UPLOAD:-1}" != "0" ]; then
   echo "→ 检测完成后将上传至 GSVPS 并显示在线报告链接"

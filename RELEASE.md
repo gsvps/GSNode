@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.17**（见 `VERSION`）
+当前版本：**v0.1.18**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.17**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.18**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.17 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.18 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.17/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.18/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.17/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.18/install.sh | sh
 ```
+
+## v0.1.18 更新
+
+- 参考数据：ping_targets / dnsbl 下载失败时新增 jsDelivr CDN 第三备用源
+- 终端输出：检测完成后的在线报告地址支持可点击超链接（Windows Terminal / iTerm 等）
 
 ## v0.1.17 更新
 
