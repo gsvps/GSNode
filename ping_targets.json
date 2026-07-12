@@ -1,6 +1,6 @@
 {
-  "version": "2026-07-08",
-  "updatedAt": "2026-07-08T13:48:06Z",
+  "version": "2026-07-12",
+  "updatedAt": "2026-07-12T14:40:00Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -234,18 +234,9 @@
       "移动": [
         {
           "ip": "117.157.16.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.180.2",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -842,7 +833,7 @@
       "移动": [
         {
           "ip": "36.131.156.145",
-          "score": 55,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -973,9 +964,18 @@
       "联通": [
         {
           "ip": "116.129.226.28",
-          "score": 95,
-          "source": "cdn",
-          "tcp80": true
+          "score": 0,
+          "source": "cdn"
+        },
+        {
+          "ip": "123.125.81.6",
+          "score": 0,
+          "source": "dns"
+        },
+        {
+          "ip": "202.106.0.20",
+          "score": 0,
+          "source": "dns"
         }
       ]
     },
@@ -1044,18 +1044,9 @@
       "移动": [
         {
           "ip": "183.220.151.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.137.82.4",
-          "score": 0,
-          "source": "gateway"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1088,18 +1079,9 @@
       "移动": [
         {
           "ip": "120.220.145.91",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.137.191.26",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1211,18 +1193,9 @@
       "移动": [
         {
           "ip": "183.201.244.91",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.106.2",
-          "score": 0,
-          "source": "gateway"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1352,7 +1325,7 @@
       "移动": [
         {
           "ip": "36.189.208.164",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -1396,7 +1369,7 @@
       "移动": [
         {
           "ip": "117.180.234.41",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
@@ -1484,18 +1457,9 @@
       "移动": [
         {
           "ip": "117.147.213.41",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "211.136.112.200",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "211.138.180.2",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
@@ -1582,25 +1546,16 @@
       ],
       "移动": [
         {
-          "ip": "221.130.33.52",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "221.179.155.161",
-          "score": 0,
-          "source": "gateway"
-        },
-        {
           "ip": "222.35.73.1",
-          "score": 0,
-          "source": "cdn"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "联通": [
         {
           "ip": "202.108.29.159",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
