@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.21**（见 `VERSION`）
+当前版本：**v0.1.22**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.21**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.22**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.21 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.22 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.21/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.22/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.21/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.22/install.sh | sh
 ```
+
+## v0.1.22 更新
+
+- IP 质量 / 网络：公网 IP 强制 IPv4 探测（避免双栈误报 IPv6）
+- IP 类型改为「原生IP / 广播IP」（出口是否在本机网卡）；网页报告保持脱敏
 
 ## v0.1.21 更新
 
