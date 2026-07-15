@@ -1,6 +1,6 @@
 {
   "version": "2026-07-15",
-  "updatedAt": "2026-07-15T08:40:04Z",
+  "updatedAt": "2026-07-15T09:40:00Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -75,19 +75,10 @@
     "CQ": {
       "电信": [
         {
-          "ip": "101.226.4.6",
-          "score": 0,
-          "source": "dns"
-        },
-        {
           "ip": "119.84.131.101",
-          "score": 0,
-          "source": "cdn"
-        },
-        {
-          "ip": "202.96.199.133",
-          "score": 0,
-          "source": "dns"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "移动": [
