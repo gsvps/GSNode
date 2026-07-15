@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.19**（见 `VERSION`）
+当前版本：**v0.1.20**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.19**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.20**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.19 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.20 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.19/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.20/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.19/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.20/install.sh | sh
 ```
+
+## v0.1.20 更新
+
+- IP 质量：基础信息新增「IP纯净度」百分比（越高越纯净，红/黄/绿区分）
+- 优先 Scamalytics，失败时按多源风险分与 DNSBL 合成
 
 ## v0.1.19 更新
 
