@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.18**（见 `VERSION`）
+当前版本：**v0.1.19**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.18**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.19**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.18 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.19 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.18/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.19/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.18/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.19/install.sh | sh
 ```
+
+## v0.1.19 更新
+
+- 终端输出：公网 IP、回程路由跳点等不再脱敏，完整显示检测结果
+- 网页报告仍保持 IP 脱敏展示
 
 ## v0.1.18 更新
 
