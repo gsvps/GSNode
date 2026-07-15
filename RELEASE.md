@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.20**（见 `VERSION`）
+当前版本：**v0.1.21**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.20**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.21**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.20 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.21 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.20/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.21/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.20/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.21/install.sh | sh
 ```
+
+## v0.1.21 更新
+
+- 修复 Scamalytics 风险分解析：旧正则误匹配 `</h1>`，导致 IP 纯净度几乎全是 99%
+- 改为解析 `Fraud Score: N` / JSON `"score"`，与 xykt IPQuality 等工具一致
 
 ## v0.1.20 更新
 
