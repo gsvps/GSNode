@@ -1,24 +1,28 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.23**（见 `VERSION`）
+当前版本：**v0.1.24**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.23**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.24**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.23 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.24 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.23/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.24/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.23/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.24/install.sh | sh
 ```
+
+## v0.1.24 更新
+
+- PING 延迟分档对齐六档图例：≤50 / 51-100 / 101-200 / 201-250 / >250 / 超时（终端着色、评分与报告图例一致）
 
 ## v0.1.23 更新
 
