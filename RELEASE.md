@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.22**（见 `VERSION`）
+当前版本：**v0.1.23**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.22**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.23**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.22 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.23 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.22/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.23/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.22/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.23/install.sh | sh
 ```
+
+## v0.1.23 更新
+
+- IP 类型：原生/广播改为与 xykt IPQuality 一致（使用地国家码 == 注册地国家码）
+- IP 纯净度：多源加权（Scamalytics/IPQS/AbuseIPDB/ipapi）+ DNSBL + 代理/VPN/Tor 等因子，避免单源掩盖
 
 ## v0.1.22 更新
 
