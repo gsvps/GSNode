@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # GSNode 纯净一键检测：临时下载 → 完整检测 → 上传 GSVPS → 终端输出 → 自动清理
-# Usage: curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.24 | sh
+# Usage: curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.25 | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.24}"
+VERSION="${GSNODE_VERSION:-0.1.25}"
 REPO="${GSNODE_REPO:-https://github.com/gsvps/GSNode}"
 DATA_PRIMARY="${GSNODE_DATA_PRIMARY:-https://dl.gsvps.com}"
 DATA_FALLBACK="${GSNODE_DATA_FALLBACK:-$REPO/raw/v${VERSION}}"
@@ -118,6 +118,36 @@ esac
 
 BIN_NAME="gsnode-${OS}-${ARCH}"
 DOWNLOAD_URL="$BASE_URL/$BIN_NAME"
+SUM_SUFFIX=".sha256"
+
+verify_checksum() {
+  bin_path="$1"
+  sum_url="$2"
+  sum_path="$3"
+
+  if ! curl -fsSL --connect-timeout 30 --max-time 60 "$sum_url" -o "$sum_path" 2>/dev/null; then
+    echo "→ 未找到校验和文件 (${sum_url})，拒绝安装" >&2
+    return 1
+  fi
+
+  expected="$(awk '{print $1}' "$sum_path")"
+  if command -v sha256sum >/dev/null 2>&1; then
+    actual="$(sha256sum "$bin_path" | awk '{print $1}')"
+  elif command -v shasum >/dev/null 2>&1; then
+    actual="$(shasum -a 256 "$bin_path" | awk '{print $1}')"
+  elif command -v openssl >/dev/null 2>&1; then
+    actual="$(openssl dgst -sha256 "$bin_path" | awk '{print $NF}')"
+  else
+    echo "→ 系统缺少 sha256sum/shasum/openssl，无法校验，拒绝安装" >&2
+    return 1
+  fi
+
+  if [ "$expected" != "$actual" ]; then
+    echo "→ 校验和不匹配: 期望 ${expected}，实际 ${actual}" >&2
+    return 1
+  fi
+  return 0
+}
 
 download_to() {
   dest="$1"
@@ -125,6 +155,7 @@ download_to() {
   retry_delay="${GSNODE_DOWNLOAD_RETRY_DELAY:-2}"
   url_primary="$DATA_PRIMARY/bin/$BIN_NAME"
   url_fallback="$BASE_URL/$BIN_NAME"
+  sum_dest="$dest.sha256"
 
   use_progress=0
   if [ -t 2 ]; then
@@ -151,7 +182,7 @@ download_to() {
         echo "→ 正在下载 GSNode [${src_label}] (${retry}/${max_retries}) ..." >&2
       fi
 
-      rm -f "$dest" 2>/dev/null || true
+      rm -f "$dest" "$sum_dest" 2>/dev/null || true
 
       ok=0
       if [ "$use_progress" = "1" ]; then
@@ -165,17 +196,21 @@ download_to() {
       fi
 
       if [ "$ok" = "1" ] && [ -s "$dest" ]; then
-        chmod +x "$dest"
-        echo "→ 下载完成" >&2
-        return 0
+        if verify_checksum "$dest" "$url$SUM_SUFFIX" "$sum_dest"; then
+          chmod +x "$dest"
+          rm -f "$sum_dest" 2>/dev/null || true
+          echo "→ 下载完成，校验和通过" >&2
+          return 0
+        fi
+        echo "→ 校验和验证未通过，丢弃本次下载" >&2
       fi
 
-      rm -f "$dest" 2>/dev/null || true
+      rm -f "$dest" "$sum_dest" 2>/dev/null || true
       retry=$((retry + 1))
     done
   done
 
-  echo "错误: 无法从 ${DATA_PRIMARY}/bin 或 GitHub 下载 ${BIN_NAME}（各源已重试 ${max_retries} 次）" >&2
+  echo "错误: 无法从 ${DATA_PRIMARY}/bin 或 GitHub 下载并校验 ${BIN_NAME}（各源已重试 ${max_retries} 次）" >&2
   return 1
 }
 

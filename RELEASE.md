@@ -1,24 +1,29 @@
 # GSNode 最新发布
 
-当前版本：**v0.1.24**（见 `VERSION`）
+当前版本：**v0.1.25**（见 `VERSION`）
 
 ## 安装
 
-> **请务必使用最新版本。** 当前版本：**v0.1.24**。运行脚本后终端会输出实际版本号。
+> **请务必使用最新版本。** 当前版本：**v0.1.25**。运行脚本后终端会输出实际版本号。
 
 ```bash
-curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.24 | sh
+curl -fsSL https://dl.gsvps.com/install.sh?v=0.1.25 | sh
 ```
 
 备用地址：
 
 ```bash
 # GitHub
-curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.24/install.sh | sh
+curl -fsSL https://github.com/gsvps/GSNode/raw/v0.1.25/install.sh | sh
 
 # jsDelivr CDN
-curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.24/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@v0.1.25/install.sh | sh
 ```
+
+## v0.1.25 更新
+
+- 安装脚本：下载二进制后强制校验 SHA256（主源/GitHub 备用源均需匹配 `.sha256`），校验和缺失或不匹配则拒绝安装，避免 CDN 或发布环节被污染后无感执行被篡改的二进制
+- 发布产物：`bin/` 下每个平台二进制新增对应 `.sha256` 文件
 
 ## v0.1.24 更新
 
