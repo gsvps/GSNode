@@ -3,7 +3,7 @@
 # Usage: curl -fsSL https://github.com/gsvps/GSNode/raw/main/cleanup.sh | sh
 set -eu
 
-VERSION="${GSNODE_VERSION:-0.1.28}"
+VERSION="${GSNODE_VERSION:-0.1.29}"
 INSTALL_DIR="${GSNODE_INSTALL_DIR:-/usr/local/bin}"
 DRY_RUN=0
 ASSUME_YES=0
