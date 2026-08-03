@@ -47,6 +47,7 @@ GSNode 纯净一键检测
   GSNODE_INSTALL_ONLY=1 仅安装，不检测（需配合 GSNODE_KEEP=1）
   GSNODE_BIN            使用已有二进制路径
   GSNODE_DATA           自定义报告缓存目录
+  GSNODE_HOST_PROVIDER  主机商名称（非交互式安装时预设，跳过交互提问）
   GSNODE_DATA_PRIMARY   数据/二进制主下载源 (默认 https://dl.gsvps.com)
   GSNODE_DATA_FALLBACK  备用下载源 (默认 GitHub raw/main)
   GSNODE_DOWNLOAD_RETRIES      每个下载源重试次数 (默认 3)
@@ -275,6 +276,16 @@ export GSVPS_UPLOAD_URL
 export GSVPS_SITE_URL
 # ping_targets / dnsbl：探针内自动 dl.gsvps.com → GitHub → jsDelivr 回退；可用 GSPROBE_PING_TARGETS_URL 强制指定
 
+PROVIDER="${GSNODE_HOST_PROVIDER:-${GSPROBE_HOST_PROVIDER:-}}"
+if [ -z "$PROVIDER" ]; then
+  set +e
+  { printf "→ 主机商名称（可选，直接回车跳过）: " > /dev/tty; IFS= read -r PROVIDER < /dev/tty; } 2>/dev/null
+  set -e
+fi
+if [ -n "$PROVIDER" ]; then
+  echo "→ 主机商: ${PROVIDER}（将随报告一并上传）"
+fi
+
 echo "→ 参考数据: ${DATA_PRIMARY} (失败自动切换 GitHub / jsDelivr)"
 echo "→ 开始完整检测（约 3–8 分钟，进度见下方日志）"
 if [ "${GSVPS_UPLOAD:-1}" != "0" ]; then
@@ -285,4 +296,8 @@ if [ "$PURE_MODE" = "1" ]; then
 fi
 echo ""
 
-"$TARGET_BIN" -run -data "$DATA_DIR"
+if [ -n "$PROVIDER" ]; then
+  "$TARGET_BIN" -run -data "$DATA_DIR" -provider "$PROVIDER"
+else
+  "$TARGET_BIN" -run -data "$DATA_DIR"
+fi
