@@ -1,0 +1,10 @@
+/data/
+/testdata/
+/verifydata/
+/dist/
+/bin/
+/gsprobe
+/gsprobe.exe
+/gsprobe.exe~
+*.tmp
+

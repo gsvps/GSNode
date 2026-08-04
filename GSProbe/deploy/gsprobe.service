@@ -1,0 +1,19 @@
+[Unit]
+Description=GSProbe server quality benchmark
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/gsprobe -addr :8899 -data /var/lib/gsprobe
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/gsprobe
+
+[Install]
+WantedBy=multi-user.target
