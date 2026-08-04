@@ -125,6 +125,20 @@ See [`bin/`](bin/):
 
 ---
 
+## Source code | 源码
+
+`bin/` 中的二进制由 [`GSProbe/`](GSProbe/) 编译而来 —— 检测引擎的完整 Go 源码，可自行审查或构建：
+
+```bash
+cd GSProbe
+go test ./...
+go build -trimpath -ldflags="-s -w" -o gsprobe ./cmd/gsprobe
+```
+
+详见 [`GSProbe/README.md`](GSProbe/README.md)。
+
+---
+
 ## Features | 功能
 
 | 模块 | 说明 |
