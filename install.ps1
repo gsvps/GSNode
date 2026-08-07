@@ -104,12 +104,23 @@ function Get-Sha256 {
 function Test-Checksum {
     param([string]$BinPath, [string]$SumUrl)
     try {
-        $sumText = (Invoke-WebRequest -Uri $SumUrl -UseBasicParsing -TimeoutSec 30).Content
+        $raw = (Invoke-WebRequest -Uri $SumUrl -UseBasicParsing -TimeoutSec 30).Content
     } catch {
         Write-Host "-> 未找到校验和文件 ($SumUrl)，拒绝安装" -ForegroundColor Red
         return $false
     }
-    $expected = ($sumText -split '\s+')[0].Trim().ToLowerInvariant()
+    # .sha256 sidecars are served as application/octet-stream; older Invoke-WebRequest
+    # returns .Content as byte[] (not string) for such responses.
+    if ($raw -is [byte[]]) {
+        $sumText = [System.Text.Encoding]::UTF8.GetString($raw)
+    } else {
+        $sumText = [string]$raw
+    }
+    $expected = ($sumText.Trim() -split '\s+')[0].Trim().ToLowerInvariant()
+    if (-not $expected) {
+        Write-Host "-> 校验和文件为空 ($SumUrl)，拒绝安装" -ForegroundColor Red
+        return $false
+    }
     $actual = Get-Sha256 -Path $BinPath
     if ($expected -ne $actual) {
         Write-Host "-> 校验和不匹配: 期望 $expected，实际 $actual" -ForegroundColor Red
