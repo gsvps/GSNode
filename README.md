@@ -14,6 +14,8 @@ GSNode 是 [GSVPS](https://www.gsvps.com) 生态下的服务器节点质量检�
 
 ## One-line detect | 一键检测
 
+**Linux / macOS**
+
 ```bash
 curl -fsSL https://dl.gsvps.com/install.sh | sh
 ```
@@ -26,6 +28,22 @@ curl -fsSL https://github.com/gsvps/GSNode/raw/main/install.sh | sh
 
 # jsDelivr CDN
 curl -fsSL https://cdn.jsdelivr.net/gh/gsvps/GSNode@main/install.sh | sh
+```
+
+**Windows (PowerShell)**
+
+```powershell
+irm https://dl.gsvps.com/install.ps1 | iex
+```
+
+备用地址：
+
+```powershell
+# GitHub
+irm https://github.com/gsvps/GSNode/raw/main/install.ps1 | iex
+
+# jsDelivr CDN
+irm https://cdn.jsdelivr.net/gh/gsvps/GSNode@main/install.ps1 | iex
 ```
 
 脚本会自动：
