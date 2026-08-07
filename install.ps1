@@ -13,6 +13,14 @@ param(
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
+# Non-UTF-8 console codepages (common on non-Chinese Windows locales) render the
+# Chinese status text as "?"; switching the console to UTF-8 fixes display even
+# though the underlying string was already correct (as copy-pasting confirmed).
+try {
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    $OutputEncoding = [System.Text.Encoding]::UTF8
+} catch {}
+
 function Get-EnvOrDefault {
     param([string]$Name, [string]$Default)
     $v = [Environment]::GetEnvironmentVariable($Name)
