@@ -1,6 +1,6 @@
 {
   "version": "2026-08-18",
-  "updatedAt": "2026-08-18T11:40:02Z",
+  "updatedAt": "2026-08-18T12:40:01Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -58,7 +58,7 @@
       "移动": [
         {
           "ip": "222.35.73.1",
-          "score": 55,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
