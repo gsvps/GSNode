@@ -49,7 +49,7 @@ function Say {
     if ($Color) { Write-Host $msg -ForegroundColor $Color } else { Write-Host $msg }
 }
 
-$Version         = Get-EnvOrDefault 'GSNODE_VERSION' '0.1.29'
+$Version         = Get-EnvOrDefault 'GSNODE_VERSION' '0.1.30'
 $Repo            = Get-EnvOrDefault 'GSNODE_REPO' 'https://github.com/gsvps/GSNode'
 $DataPrimary     = Get-EnvOrDefault 'GSNODE_DATA_PRIMARY' 'https://dl.gsvps.com'
 $BaseUrl         = Get-EnvOrDefault 'GSNODE_BASE_URL' "$Repo/raw/v$Version/bin"
