@@ -1,6 +1,6 @@
 {
   "version": "2026-08-31",
-  "updatedAt": "2026-08-31T08:40:03Z",
+  "updatedAt": "2026-08-31T21:40:03Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -1165,10 +1165,19 @@
       ],
       "联通": [
         {
+          "ip": "123.125.81.6",
+          "score": 0,
+          "source": "dns"
+        },
+        {
           "ip": "123.139.127.132",
-          "score": 95,
-          "source": "cdn",
-          "tcp80": true
+          "score": 0,
+          "source": "cdn"
+        },
+        {
+          "ip": "202.102.11.68",
+          "score": 0,
+          "source": "gateway"
         }
       ]
     },
