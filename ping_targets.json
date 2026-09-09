@@ -1,6 +1,6 @@
 {
   "version": "2026-09-09",
-  "updatedAt": "2026-09-09T06:40:03Z",
+  "updatedAt": "2026-09-09T07:40:03Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -49,25 +49,16 @@
     "BJ": {
       "电信": [
         {
-          "ip": "101.226.4.6",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "202.96.199.133",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "219.141.136.10",
-          "score": 0,
-          "source": "dns"
+          "ip": "220.181.173.35",
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "移动": [
         {
           "ip": "222.35.73.1",
-          "score": 95,
+          "score": 85,
           "source": "cdn",
           "tcp80": true
         }
@@ -1556,19 +1547,10 @@
     "北京": {
       "电信": [
         {
-          "ip": "219.141.136.10",
-          "score": 0,
-          "source": "dns"
-        },
-        {
-          "ip": "219.141.136.12",
-          "score": 0,
-          "source": "gateway"
-        },
-        {
           "ip": "220.181.173.35",
-          "score": 0,
-          "source": "cdn"
+          "score": 95,
+          "source": "cdn",
+          "tcp80": true
         }
       ],
       "移动": [
