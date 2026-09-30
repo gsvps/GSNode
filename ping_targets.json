@@ -1,6 +1,6 @@
 {
   "version": "2026-09-30",
-  "updatedAt": "2026-09-30T15:40:03Z",
+  "updatedAt": "2026-09-30T16:40:03Z",
   "provinces": {
     "AH": {
       "电信": [
@@ -630,10 +630,19 @@
     "HN": {
       "电信": [
         {
+          "ip": "101.226.4.6",
+          "score": 0,
+          "source": "dns"
+        },
+        {
           "ip": "113.240.117.108",
-          "score": 95,
-          "source": "cdn",
-          "tcp80": true
+          "score": 0,
+          "source": "cdn"
+        },
+        {
+          "ip": "202.103.0.68",
+          "score": 0,
+          "source": "gateway"
         }
       ],
       "移动": [
@@ -1378,7 +1387,7 @@
       "移动": [
         {
           "ip": "117.180.234.41",
-          "score": 85,
+          "score": 95,
           "source": "cdn",
           "tcp80": true
         }
